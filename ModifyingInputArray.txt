@@ -1,0 +1,38 @@
+package Assignment8;
+
+public class ModifyingInputArray {
+	    public static int compress(char[] chars) 
+	    {
+	        int write = 0;
+	        int count = 0;	        
+	        for (int read = 0; read < chars.length; read++) 
+	        {
+	            count++;    
+	            if (read + 1 == chars.length || chars[read] != chars[read + 1]) 
+	            {
+	                chars[write++] = chars[read];
+	                if (count > 1) 
+	                {
+	                    String countStr = Integer.toString(count);
+	                    for (char c : countStr.toCharArray()) 
+	                    {
+	                        chars[write++] = c;
+	                    }
+	                }
+	                count = 0;
+	            }
+	        }   
+	        return write;
+	    }
+	    public static void main(String[] args) 
+	    {
+	        char[] chars = {'a', 'a', 'b', 'b', 'c', 'c', 'c'};
+	        int newLength = compress(chars);        
+	        System.out.println("New length: " + newLength);
+	        System.out.print("Compressed array: ");
+	        for (int i = 0; i < newLength; i++) 
+	        {
+	            System.out.print(chars[i] + " ");
+	        }
+	    }
+}
